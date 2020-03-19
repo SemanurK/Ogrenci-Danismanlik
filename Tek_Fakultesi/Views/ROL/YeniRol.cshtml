@@ -1,0 +1,19 @@
+﻿@model Tek_Fakultesi.Models.Entity_Fremawork.ROL
+@{
+    ViewBag.Title = "YeniRol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container "  >
+    <h2>Rol Düzenlemesi</h2>
+    @using (Html.BeginForm("Kaydet", "ROL", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.ROLADI)
+            @Html.TextBoxFor(m => m.ROLADI, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m => m.ID)
+        @* hiddenfor gelen veriyi form da göstermez ama içerisinde saklar*@
+        <button type="submit" class="btn btn-success">Kaydet</button>
+    }
+
+</div>

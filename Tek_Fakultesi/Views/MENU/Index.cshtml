@@ -1,0 +1,42 @@
+﻿@using Tek_Fakultesi.Models.Entity_Fremawork
+@model List<MENU>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-control font-20  " >  -     Menu Listesi            -</h2>
+<table class="table border-cyan">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Menu Adı</th>
+            <th>Üst Menü</th>
+            <th>Görünürlük</th>
+            <th>Controller </th>
+            <th>Action</th>
+            <th>Açıklama</th>
+            <th>Düzenle </th>
+            <th>Sil </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var menu in Model)
+        {
+        <tr>
+            <td>@menu.ID</td>
+            <td>@menu.MENU_ADI</td>
+            <td>@menu.USTMENU</td>
+            <td>@menu.GORUNURLUK</td>
+            <td>@menu.CONTOLLERNAME</td>
+            <td>@menu.ACTIONNAME</td>
+            <td>@menu.ACIKLAMA</td>
+            <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = menu.ID }, new { @class = "btn btn-primary" })</td>
+            <td>@Html.ActionLink("Sil", "Sil", new { id = menu.ID }, new { @class = "btn btn-warning" })</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+

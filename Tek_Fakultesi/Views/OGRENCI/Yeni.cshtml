@@ -1,0 +1,109 @@
+﻿@model Tek_Fakultesi.ViewModels.OgrenciViewModel
+@{
+    ViewBag.Title = "Yeni";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Kaydet", "OGRENCI", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body"><h3 align="center">Yeni Öğrenci Oluşturma</h3></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">Öğrenci Bilgileri</h5>
+                    <form method="post" action="~/Controllers/OGRENCI/Kaydet">
+
+                        <div class="form-group">
+                            <div class="row">
+
+                                <label class="col-md-6">
+                                    Öğrenci Adı
+                                </label>
+                                <label class="col-md-6">
+                                    Öğrenci Soyadı
+                                </label>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.ogrenci.OGR_AD, new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.ogrenci.OGR_SOYAD, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12">
+                                    Öğrenci Numarası
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.ogrenci.KUL_AD, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12">
+                                    Bölümü
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(m => m.ogrenci.OGR_BOLUM, new SelectList(Model.birims, "BIRIMID", "BIRIMAD"), "Bölümü Seçiniz", new { @class = "form-control" })
+                                </div>
+                                <label class="col-md-12">
+                                    @ViewBag.mesa_bolum
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12">
+                                    Sınıfı
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(m => m.ogrenci.OGR_SINIF, new SelectList(new List<int> { 1, 2, 3, 4 }), "Sınıfını Seçiniz", new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12">
+                                    Danısmanı
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.DropDownListFor(m => m.ogrenci.OGR_DAN, new SelectList(Model.Danismans, "ID", "AD"), "Danısmanı Seçiniz", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radio">
+                            <div class="row">
+                                <label class="col-md-12">
+                                    Öğrenci Cinsiyeti
+                                </label><small>*</small>
+                                <div class="col-md-3">
+                                    @Html.RadioButtonFor(m => m.ogrenci.Cinsiyet, true) Kadın
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.RadioButtonFor(m => m.ogrenci.Cinsiyet, false) Erkek
+                                </div>
+                            </div>
+                        </div>
+                        @ViewBag.Mesaj
+                        @Html.HiddenFor(m => m.ogrenci.ID)
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Öğrenciyi Kaydet </button>
+                        <button type="submit" class="btn btn-dark waves-effect waves-light">İptal </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}

@@ -1,0 +1,99 @@
+﻿
+@model List<Tek_Fakultesi.Models.Entity_Fremawork.OGRENCİ>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="breadcrumb-item active">Bütün Öğrenciler</h4>
+    </div>
+</div>
+ <!--BÜTÜN ÖĞRENCİLERİ LİSTELE -->
+
+@{if (Model != null)
+    {
+        
+        <div class="col-md-12">
+            
+            <div class="row el-element-overlay">
+                @foreach (var ogr in Model)
+                {
+                   @Html.HiddenFor(m=>ogr,new { @Value =ogr.ID})
+                  
+                    var bolum = ogr.BIRIMLER.BIRIMAD;
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1">
+                                    @if (ogr.image == null && ogr.Cinsiyet == false)
+                                    {
+                                        <img src="~/Content/image/erkek.png" alt="user" />
+                                        <div class="el-overlay">
+                                            <ul class="el-info">
+                                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Content/image/erkek.png"><i class="icon-magnifier"></i></a></li>
+                                                <li>@Html.ActionLink("D", "Goruntule", new { id = ogr.ID }, new { @class = "btn default btn-outline" })</li>
+                                              
+
+                                            </ul>
+                                        </div>
+
+                                    }
+                                    else if (ogr.image == null && ogr.Cinsiyet == true)
+                                    {
+                                        <img src="~/Content/image/kadın.png" alt="user" />
+                                        <div class="el-overlay">
+                                            <ul class="el-info">
+                                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Content/image/kadın.png"><i class="icon-magnifier"></i></a></li>
+                                                <li>@Html.ActionLink("D", "Goruntule", new { id = ogr.ID }, new { @class = "btn default btn-outline" })</li>
+
+                                                <!--<li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>-->
+                                            </ul>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/image/@ogr.image" alt="user" />
+                                        <div class="el-overlay">
+                                            <ul class="el-info">
+                                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Content/image/@ogr.image"><i class="icon-magnifier"></i></a></li>
+                                                <li>@Html.ActionLink("D", "Goruntule", new { id = ogr.ID }, new { @class = "btn default btn-outline" })</li>
+
+
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                                    
+                                <div class="el-card-content">
+                                    <h5 class="card-title text-uppercase">@ogr.OGR_AD @ogr.OGR_SOYAD</h5> <small><b>@bolum</b></small>
+                                    <br />
+                                    <small>Sınıf: @ogr.OGR_SINIF / Numara: @ogr.KUL_AD</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    }}
+
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src=~/Scripts/perfect-scrollbar.jquery.min.js"></script>
+<!--Wave Effects -->
+<script src="~/Scripts/waves.js"></script>
+<!--Menu sidebar -->
+<script src="~/Scripts/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src=~/Scripts/custom.min.js"></script>
+<!-- Magnific popup JavaScript -->
+<script src="~/Scripts/jquery.magnific-popup.min.js"></script>
+<script src="~/Scripts/jquery.magnific-popup-init.js"></script>
+
+

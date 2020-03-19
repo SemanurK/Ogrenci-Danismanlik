@@ -1,0 +1,50 @@
+﻿@using Tek_Fakultesi.Models.Entity_Fremawork
+@model List<ROL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase">
+                    Rol Listesi
+                </h5>
+                <table class="table border-cyan">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Rol Adı</th>
+                            <th>Rol</th>
+                            <th>İzinleri Düzenle</th>
+                            <th>Rolü Düzenle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var rol in Model)
+                        {
+                            <tr>
+                                <td>@rol.ID</td>
+                                <td>@rol.ROLADI</td>
+                                <td>@rol.ROLADI</td>
+                                <td>@Html.ActionLink(" İzinleri Düzenle", "RolKontrol", new { id = rol.ID }, new { @class = "btn btn-primary" })</td>
+                                <td>@Html.ActionLink(" Rolü Düzenle", "Guncelle1", new { id = rol.ID }, new { @class = "btn btn-warning" })</td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

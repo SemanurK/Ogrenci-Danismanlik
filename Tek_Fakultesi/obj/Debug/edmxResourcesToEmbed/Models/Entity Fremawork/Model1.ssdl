@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FAKULTEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BIRIMLER">
+    <Key>
+      <PropertyRef Name="BIRIMID" />
+    </Key>
+    <Property Name="BIRIMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BIRIMAD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DANISMAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KUL_AD" Type="nvarchar" MaxLength="11" />
+    <Property Name="UNVAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="SOYAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="BIRIMID" Type="int" />
+    <Property Name="SİFRE" Type="nvarchar" MaxLength="20" />
+    <Property Name="ROLID" Type="int" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" />
+    <Property Name="cinsiyet" Type="bit" />
+  </EntityType>
+  <EntityType Name="DANISMAN_GOREVLENDİRME">
+    <Key>
+      <PropertyRef Name="GOREV_ID" />
+    </Key>
+    <Property Name="GOREV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GOREVLENDİREN_DANISMAN" Type="int" Nullable="false" />
+    <Property Name="GOREVLENEN_OGR_ID" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="GOREV_GİRİST" Type="datetime" />
+    <Property Name="GOREV_SONLANDIRMAT" Type="datetime" />
+    <Property Name="GOREV_ACIKLAMA" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MENU_ADI" Type="nvarchar" MaxLength="100" />
+    <Property Name="USTMENU" Type="int" />
+    <Property Name="GORUNURLUK" Type="int" />
+    <Property Name="CONTOLLERNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ACTIONNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ICON" Type="nvarchar" MaxLength="100" />
+    <Property Name="SIRANO" Type="int" />
+    <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="MENUROL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROLID" Type="int" />
+    <Property Name="MENUID" Type="int" />
+  </EntityType>
+  <EntityType Name="OGR_DANISMAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OGR_ID" Type="int" />
+    <Property Name="DANISMAN_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="OGRENCİ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KUL_AD" Type="nvarchar" MaxLength="11" />
+    <Property Name="SİFRE" Type="nvarchar(max)" />
+    <Property Name="OGR_AD" Type="nvarchar" MaxLength="25" />
+    <Property Name="OGR_SOYAD" Type="nvarchar" MaxLength="30" />
+    <Property Name="OGR_BOLUM" Type="int" />
+    <Property Name="OGR_SINIF" Type="nvarchar" MaxLength="3" />
+    <Property Name="OGR_ORT" Type="nvarchar" MaxLength="10" />
+    <Property Name="image" Type="nvarchar(max)" />
+    <Property Name="Cinsiyet" Type="bit" Nullable="false" />
+    <Property Name="D_Yeri" Type="nvarchar" MaxLength="25" />
+    <Property Name="D_Tarihi" Type="date" />
+    <Property Name="Konya_Adresi" Type="nvarchar(max)" />
+    <Property Name="Cep" Type="nvarchar" MaxLength="11" />
+    <Property Name="E_posta" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fakulte_girisp" Type="float" />
+    <Property Name="İkametgah_Adresi" Type="nvarchar(max)" />
+    <Property Name="A_AdSoyad" Type="nvarchar" MaxLength="25" />
+    <Property Name="A_OgrenimDurumu" Type="nvarchar" MaxLength="25" />
+    <Property Name="A_Saglık_durumu" Type="bit" />
+    <Property Name="B_AdSoyad" Type="nvarchar" MaxLength="25" />
+    <Property Name="B_OgrenimDurumu" Type="nvarchar" MaxLength="25" />
+    <Property Name="B_Saglık_durumu" Type="bit" />
+    <Property Name="Aile_Birey_Sayisi" Type="int" />
+    <Property Name="Gecim_Sorumluluk_Sahibi" Type="nvarchar" MaxLength="25" />
+    <Property Name="Kardes_Sayisi" Type="int" />
+    <Property Name="Kan_Grubu" Type="nvarchar" MaxLength="25" />
+    <Property Name="Hastaliklar" Type="nvarchar(max)" />
+    <Property Name="Ev_Sayisi" Type="int" />
+    <Property Name="Araba_Sayisi" Type="int" />
+    <Property Name="Sosyal_Guvence" Type="nvarchar" MaxLength="25" />
+    <Property Name="SG_Kim" Type="nvarchar" MaxLength="25" />
+    <Property Name="Toplam_Gelir" Type="float" />
+    <Property Name="Kredi_Burs" Type="int" />
+    <Property Name="Yakin_Adsoyad" Type="nvarchar" MaxLength="25" />
+    <Property Name="Yakinlik_derece" Type="nvarchar" MaxLength="25" />
+    <Property Name="Yakin_Tel" Type="nvarchar" MaxLength="11" />
+    <Property Name="Özel_Durum" Type="nvarchar(max)" />
+    <Property Name="OGR_DAN" Type="int" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROLADI" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_DANISMAN_GOREVLENDİRME_PERSONEL">
+    <End Role="DANISMAN" Type="Self.DANISMAN" Multiplicity="1" />
+    <End Role="DANISMAN_GOREVLENDİRME" Type="Self.DANISMAN_GOREVLENDİRME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANISMAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DANISMAN_GOREVLENDİRME">
+        <PropertyRef Name="GOREVLENDİREN_DANISMAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MENUROL_MENU">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
+    <End Role="MENUROL" Type="Self.MENUROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENUROL">
+        <PropertyRef Name="MENUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MENUROL_MENU1">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
+    <End Role="MENUROL" Type="Self.MENUROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENUROL">
+        <PropertyRef Name="MENUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MENUROL_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+    <End Role="MENUROL" Type="Self.MENUROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENUROL">
+        <PropertyRef Name="ROLID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGR_DANISMAN_DANISMAN">
+    <End Role="DANISMAN" Type="Self.DANISMAN" Multiplicity="0..1" />
+    <End Role="OGR_DANISMAN" Type="Self.OGR_DANISMAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANISMAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OGR_DANISMAN">
+        <PropertyRef Name="DANISMAN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGR_DANISMAN_OGRENCİ1">
+    <End Role="OGRENCİ" Type="Self.OGRENCİ" Multiplicity="0..1" />
+    <End Role="OGR_DANISMAN" Type="Self.OGR_DANISMAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OGRENCİ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OGR_DANISMAN">
+        <PropertyRef Name="OGR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRENCİ_BIRIMLER">
+    <End Role="BIRIMLER" Type="Self.BIRIMLER" Multiplicity="0..1" />
+    <End Role="OGRENCİ" Type="Self.OGRENCİ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIRIMLER">
+        <PropertyRef Name="BIRIMID" />
+      </Principal>
+      <Dependent Role="OGRENCİ">
+        <PropertyRef Name="OGR_BOLUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONEL_BIRIMLER">
+    <End Role="BIRIMLER" Type="Self.BIRIMLER" Multiplicity="0..1" />
+    <End Role="DANISMAN" Type="Self.DANISMAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIRIMLER">
+        <PropertyRef Name="BIRIMID" />
+      </Principal>
+      <Dependent Role="DANISMAN">
+        <PropertyRef Name="BIRIMID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONEL_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+    <End Role="DANISMAN" Type="Self.DANISMAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DANISMAN">
+        <PropertyRef Name="ROLID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FAKULTEModelStoreContainer">
+    <EntitySet Name="BIRIMLER" EntityType="Self.BIRIMLER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DANISMAN" EntityType="Self.DANISMAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DANISMAN_GOREVLENDİRME" EntityType="Self.DANISMAN_GOREVLENDİRME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENUROL" EntityType="Self.MENUROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGR_DANISMAN" EntityType="Self.OGR_DANISMAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGRENCİ" EntityType="Self.OGRENCİ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DANISMAN_GOREVLENDİRME_PERSONEL" Association="Self.FK_DANISMAN_GOREVLENDİRME_PERSONEL">
+      <End Role="DANISMAN" EntitySet="DANISMAN" />
+      <End Role="DANISMAN_GOREVLENDİRME" EntitySet="DANISMAN_GOREVLENDİRME" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENUROL_MENU" Association="Self.FK_MENUROL_MENU">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="MENUROL" EntitySet="MENUROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENUROL_MENU1" Association="Self.FK_MENUROL_MENU1">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="MENUROL" EntitySet="MENUROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENUROL_ROL" Association="Self.FK_MENUROL_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="MENUROL" EntitySet="MENUROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGR_DANISMAN_DANISMAN" Association="Self.FK_OGR_DANISMAN_DANISMAN">
+      <End Role="DANISMAN" EntitySet="DANISMAN" />
+      <End Role="OGR_DANISMAN" EntitySet="OGR_DANISMAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGR_DANISMAN_OGRENCİ1" Association="Self.FK_OGR_DANISMAN_OGRENCİ1">
+      <End Role="OGRENCİ" EntitySet="OGRENCİ" />
+      <End Role="OGR_DANISMAN" EntitySet="OGR_DANISMAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRENCİ_BIRIMLER" Association="Self.FK_OGRENCİ_BIRIMLER">
+      <End Role="BIRIMLER" EntitySet="BIRIMLER" />
+      <End Role="OGRENCİ" EntitySet="OGRENCİ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONEL_BIRIMLER" Association="Self.FK_PERSONEL_BIRIMLER">
+      <End Role="BIRIMLER" EntitySet="BIRIMLER" />
+      <End Role="DANISMAN" EntitySet="DANISMAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONEL_ROL" Association="Self.FK_PERSONEL_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="DANISMAN" EntitySet="DANISMAN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

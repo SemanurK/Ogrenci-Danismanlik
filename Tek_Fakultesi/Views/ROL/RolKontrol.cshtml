@@ -1,0 +1,54 @@
+﻿@using Tek_Fakultesi.Models.Entity_Fremawork
+@model Tek_Fakultesi.Models.IzinModel
+
+@{
+    ViewBag.Title = "RolKontrol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var menulistesi = ViewBag.menulist as List<Tek_Fakultesi.Models.Entity_Fremawork.MENU>;
+}
+
+<h2>Rol Kontrol Formu</h2>
+@using (Html.BeginForm("Guncelle", "ROL", FormMethod.Post))
+{
+    <div class="form-group">
+        <table class="table border-cyan">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Menu Adı</th>
+                    <th>Controller </th>
+                    <th>Action</th>
+                    <th>Açıklama</th>
+                    <th>İzin</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var menu in Model.CheckIzin)
+                {
+                    <tr>
+                        <td>@menu.id</td>
+                        <td>@menu.menuAdi</td>
+                        <td>@menu.contName</td>
+                        <td>@menu.acName</td>
+                        <td>@menu.aciklama</td>
+
+                        <td>
+                            <fieldset>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" checked="@menu.check" name="@menu.id" class="custom-control-input" id="@menu.id" aria-invalid="false" />
+                                    <label class="custom-control-label" for="@menu.id"></label>
+
+                                </div>
+                            </fieldset>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Kaydet </button>
+    </div>
+
+}

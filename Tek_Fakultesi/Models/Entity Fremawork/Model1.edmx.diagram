@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0896f44ea0c14bc68e07b4828b2f273f" Name="Diagram1">
+        <EntityTypeShape EntityType="FAKULTEModel.BIRIMLER" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FAKULTEModel.DANISMAN_GOREVLENDİRME" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="FAKULTEModel.MENU" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FAKULTEModel.MENUROL" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FAKULTEModel.ROL" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FAKULTEModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="FAKULTEModel.FK_MENUROL_MENU" ManuallyRouted="false" />
+        <AssociationConnector Association="FAKULTEModel.FK_MENUROL_MENU1" ManuallyRouted="false" />
+        <AssociationConnector Association="FAKULTEModel.FK_MENUROL_ROL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FAKULTEModel.DANISMAN" Width="1.5" PointX="1.25" PointY="2.25" />
+        <AssociationConnector Association="FAKULTEModel.FK_PERSONEL_BIRIMLER" />
+        <AssociationConnector Association="FAKULTEModel.FK_DANISMAN_GOREVLENDİRME_PERSONEL" />
+        <AssociationConnector Association="FAKULTEModel.FK_PERSONEL_ROL" />
+        <EntityTypeShape EntityType="FAKULTEModel.OGR_DANISMAN" Width="1.5" PointX="8.25" PointY="7" />
+        <AssociationConnector Association="FAKULTEModel.FK_OGR_DANISMAN_DANISMAN" />
+        <EntityTypeShape EntityType="FAKULTEModel.OGRENCİ" Width="1.5" PointX="3" PointY="6.875" />
+        <AssociationConnector Association="FAKULTEModel.FK_OGRENCİ_BIRIMLER" />
+        <AssociationConnector Association="FAKULTEModel.FK_OGR_DANISMAN_OGRENCİ1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

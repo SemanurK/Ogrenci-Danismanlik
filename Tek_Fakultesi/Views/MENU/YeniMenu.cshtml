@@ -1,0 +1,53 @@
+﻿@model Tek_Fakultesi.Models.Entity_Fremawork.MENU
+@{
+    /**/
+
+    ViewBag.Title = "YeniMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<<h2>Personel Formu</h2>
+@using (Html.BeginForm("Kaydet", "MENU", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MENU_ADI)
+        @Html.TextBoxFor(m => m.MENU_ADI, new { @class = "form-control" })
+    </div>
+    @* <div class="form-group">
+            @Html.LabelFor(m => m.personel.SİFRE)
+            @Html.PasswordFor(m=>m.personel.SİFRE,new {@class="form-control" })
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(m => m.USTMENU)
+        @Html.TextBoxFor(m => m.USTMENU, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GORUNURLUK)
+        @Html.TextBoxFor(m => m.GORUNURLUK, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CONTOLLERNAME)
+        @Html.TextBoxFor(m => m.CONTOLLERNAME, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ACTIONNAME)
+        @Html.TextBoxFor(m => m.ACTIONNAME, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ICON)
+        @Html.TextBoxFor(m => m.ICON, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SIRANO)
+        @Html.TextBoxFor(m => m.SIRANO, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ACIKLAMA)
+        @Html.TextBoxFor(m => m.ACIKLAMA, new { @class = "form-control" })
+    </div>
+    
+    @Html.HiddenFor(m => m.ID)
+    <button type="submit" class="btn btn-default"> Menu Oluştur</button>
+}
+
+

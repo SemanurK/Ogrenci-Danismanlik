@@ -1,0 +1,33 @@
+﻿@using Tek_Fakultesi.Models.Entity_Fremawork
+@model List<BIRIMLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Yetkili Kişiler </h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Birim</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var birim in Model)
+            {
+                <tr>
+                    <td>@birim.BIRIMID</td>
+                    <td>@birim.BIRIMAD</td>
+                    <td><a class="btn btn-primary" href="/BIRIM/Guncelle/@birim.BIRIMID">Güncelle</a></td>
+                    <td><a class="btn btn-warning" href="/BIRIM/Sil/@birim.BIRIMID">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success " href="/BIRIM/YeniBirim">Yeni Yetkili Ekle</a>
+

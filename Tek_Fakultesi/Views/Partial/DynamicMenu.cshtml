@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+
+    //> sol menü listesini getiren kısım
+    List<Tek_Fakultesi.Models.Entity_Fremawork.MENU> MenuList = new List<Tek_Fakultesi.Models.Entity_Fremawork.MENU>();
+    var rolid = ViewBag.Rolid;
+    var adsoyad = ViewBag.AdSoyad;
+
+    
+    try
+    {
+        if (rolid != null)
+        {
+            Tek_Fakultesi.Functions.GetMenuList getlist = new Tek_Fakultesi.Functions.GetMenuList();
+            MenuList = getlist.GetMenulist(rolid);
+        }
+
+    }
+    catch (Exception)
+    {
+        new RedirectResult("/Home/Error");
+    }
+}
+
+
+
+
+
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar"  width="10dp">
+
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+
+                <li class="user-pro">
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        @if (ViewBag.resim == null && ViewBag.cinsiyet == false)
+                        {
+                            <img src="~/Content/image/erkek.png" alt="user-img" class="img-circle">
+                        }
+                        else if (ViewBag.resim == null && ViewBag.cinsiyet == true)
+                        {
+                            <img src="~/Content/image/kadın.png" alt="user-img" class="img-circle">
+                        }
+                        else
+                        {
+                        <img src="~/Content/image/@ViewBag.resim" alt="user-img" class="img-circle">
+                        }
+                        <span class="hide-menu">@adsoyad</span>
+                    </a>
+                 <!--   <ul aria-expanded="false" class="collapse">
+                        <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
+                        <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
+                        <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
+                        <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
+                        <li><a href="/Account/LogOff"><i class="fa fa-power-off"></i> Logout</a></li>
+                    </ul>-->
+                </li>
+
+                <li class="nav-small-cap">--- PROFESSIONAL</li>
+
+
+
+                @{if (MenuList != null)
+                    {
+                        foreach (var item_menuler in (MenuList.Where(c => c.USTMENU == 0).GroupBy(c => c.ID).ToList()))
+                        {
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="@item_menuler.FirstOrDefault().ICON"></i>
+                                    <span class="hide-menu">
+                                        @item_menuler.FirstOrDefault().MENU_ADI
+                                    </span>
+
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+
+                                    @foreach (var item_action in MenuList.Where(c => c.USTMENU == item_menuler.FirstOrDefault().ID).OrderBy(t => t.SIRANO).ToList())
+                                    {
+                                        <li>
+                                            <a href="/@item_action.CONTOLLERNAME/@item_action.ACTIONNAME">
+
+                                                @item_action.MENU_ADI
+                                            </a>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }}
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+

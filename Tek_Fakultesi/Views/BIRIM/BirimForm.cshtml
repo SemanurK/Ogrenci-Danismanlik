@@ -1,0 +1,28 @@
+﻿@model Tek_Fakultesi.Models.Entity_Fremawork.BIRIMLER
+@{
+                /**/
+
+                ViewBag.Title = "YeniBirim";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<form method="post">
+        <div class="form-group">
+            <label> Birim Adı</label>
+            <input type="text" name="BIRIMAD" class="form-control" />
+
+        </div>
+        <button type="submit" class="btn btn-success">Yeni Yetkili Birim Ekle</button>
+    </form>*@
+@using (Html.BeginForm("Kaydet", "BIRIM", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BIRIMAD)
+        @Html.TextBoxFor(m => m.BIRIMAD, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m=>m.BIRIMID)
+    @* hiddenfor gelen veriyi form da göstermez ama içerisinde saklar*@
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+
